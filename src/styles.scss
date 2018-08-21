@@ -1,1 +1,102 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Kameron:400,700');
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+* {
+  font-family: 'Kameron', serif;
+}
+
+body {
+  margin: 0;
+}
+
+app {
+  &-root {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    background-image: linear-gradient(to right top, #fbc49b, #ffc0c2, #f6c7e9, #d4d5fc, #bce0f8);
+  }
+
+  &-converter {
+    margin: 8% auto auto;
+  }
+}
+
+.mat {
+  &-form-field {
+    &.mat-focused &-ripple {
+      background-color: #fff;
+    }
+
+    &-label {
+      color: #fff !important;
+    }
+
+    &-underline {
+      background-color: #fff !important;
+      height: 2px !important;
+    }
+
+    &-prefix {
+      font-size: 1.8rem;
+      color: #fff;
+    }
+  }
+
+  &-select-value-text .ng-star-inserted {
+    font-size: 1rem;
+    color: #fff !important;
+  } 
+
+  &-select-arrow {
+    color: #ffc9a6 !important;
+  }
+
+  &-progress-spinner,
+  &-progress-spinner svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  &-progress-spinner {
+    position: absolute !important;
+    top: 8px;
+    left: 8px;;
+  }
+
+  &-progress-spinner circle, 
+  &-spinner circle {
+    stroke: #fff;
+  }
+}
+
+.converter__form-calendar {
+  .mat-form-field {
+    &-infix {
+      border-top: 0;
+      width: 78px;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    &-underline {
+      display: none;
+    }
+ 
+    &-wrapper {
+      padding: 0;
+    }
+  }
+
+  .mat-icon-button {
+    width: auto;
+    height: auto;
+    font-size: 20px !important;
+  }
+
+  .mat-datepicker-toggle {
+    color: #fff;
+  }
+}

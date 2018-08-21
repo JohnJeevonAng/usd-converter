@@ -1,0 +1,94 @@
+.converter {
+  width: 450px;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+
+  &__card {
+    border-radius: 6px;
+    padding: 0;
+  }
+
+  &__controls {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+
+  &__form {
+    padding: 0 10px;
+
+    &-lockup {
+      background-image: linear-gradient(
+        to left bottom, 
+        #ff6600, 
+        #ff8134, 
+        #ff9959, 
+        #ffb07c, 
+        #ffc6a1
+      );
+      display: block;
+      border-radius: 6px 6px 0 0;
+      position: relative;
+      width: calc(100% - 50px);
+      padding: 25px;
+      overflow: hidden;
+    }
+
+    &-title {
+      font-weight: 400;
+      color: #ffffff;
+      font-size: 2.4rem;
+    }
+
+    &-field {
+      width: 100%;
+    }
+
+    &-control {
+      font-size: 1.3rem;
+      color: #fff;
+    }
+
+    &-icon i {
+      color: #ffc9a6;
+      font-size: 3rem;
+    }
+
+    &-calendar &-infix {
+      display: none;
+    }
+
+    &-update-rates {
+      margin-right: 5px;
+    }
+  }
+
+  &__response {
+    width: 60%;
+    margin: auto;
+
+    &-lockup {
+      padding: 25px;
+    }
+  }
+
+  &__result {
+    margin-bottom: 0;
+    margin-top: 0;
+
+    &-p {
+      margin: 0;
+    }
+
+    &-lockup {
+      text-align: center;
+    }
+
+    &-currency {
+      margin-top: 5px;
+    }
+
+    &-symbol {
+      font-size: 1rem;
+    }
+  }
+}

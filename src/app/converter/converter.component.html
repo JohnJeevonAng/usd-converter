@@ -1,0 +1,95 @@
+<div class="converter">
+  <mat-card class="converter__card">
+    <mat-card-header class="converter__form-lockup">
+      <mat-progress-spinner
+          class="example-margin"
+          [color]="'primary'"
+          [mode]="'indeterminate'"
+          value="50"
+          *ngIf="loading">
+      </mat-progress-spinner>
+      <div class="converter__controls">
+        <mat-form-field class="converter__form-calendar">
+          <input matInput 
+              [matDatepicker]="picker" 
+              [formControl]="selectedDate"
+              [min]="dateValidation.min"
+              [max]="dateValidation.max"
+              readonly>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker> 
+        </mat-form-field>
+      </div>
+      <mat-card-title class="converter__form-title">
+        Converter
+      </mat-card-title>
+
+      <form class="converter__form" action="">
+        <mat-grid-list cols="5" rows="2">
+          <mat-grid-tile colspan="2">
+            <mat-form-field class="converter__form-field" [floatLabel]="'always'">
+              <input matInput 
+                  placeholder="Amount" 
+                  type="text" 
+                  name="currency"
+                  class="converter__form-control"
+                  [disabled]="loading"
+                  [mask]="maskMoney"
+                  [(ngModel)]="currency">
+              <span matPrefix>$&nbsp;</span>
+            </mat-form-field>
+          </mat-grid-tile>
+          <mat-grid-tile class="converter__form-icon">
+            <i class="material-icons large">compare_arrows</i>
+          </mat-grid-tile>
+          <mat-grid-tile colspan="2">
+            <mat-form-field class="converter__form-field">
+              <mat-select [disabled]="loading" 
+                  [(value)]="targetCurrency">
+                <mat-option [value]="key" 
+                    *ngFor="let key of objectKeys(currencies)">
+                  {{ currencies[key] + ' ('+ key + ')' }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </mat-grid-tile>
+ 
+          <mat-grid-tile colspan="5">
+            <div class="button-row">
+              <button mat-raised-button 
+                  type="button"
+                  color="primary" 
+                  class="converter__form-update-rates"
+                  (click)="updateRates()"
+                  [disabled]="loading">
+                Update rates
+              </button>
+              <button mat-raised-button 
+                  type="button"
+                  color="accent" 
+                  [disabled]="loading || !currency"
+                  (click)="convert()">
+                Convert
+              </button>
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </form>
+
+    </mat-card-header>
+    <mat-card-content 
+        class="converter__response-lockup" 
+        *ngIf="converted || alert.message">
+      <h3>{{ alert.message }}</h3>
+      <div class="converter__response" *ngIf="converted">
+        <div class="converter__result-lockup">
+          <p class="converter__result-p">Result:</p>
+          <h1 class="converter__result">
+            {{ converted.result | currency: converted.currency + ' ': true }}
+          </h1>
+          <p class="converter__result-currency">{{ converted.name }}</p>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
